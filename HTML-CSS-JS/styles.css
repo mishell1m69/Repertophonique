@@ -2,6 +2,7 @@ body {
 	font-family: "Monaco", monospace;
 	/*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
 	margin: 0;
+	background: linear-gradient(0deg, #cecece 2%, #7ca4be 98%);
 }
 
 html {
@@ -32,7 +33,7 @@ html {
 
 #libelle {
 	font-size: 25px;
-	color: grey;
+	color: white;
 }
 
 #menugauche {
@@ -51,23 +52,19 @@ html {
 	cursor: pointer;
 	border: 2px solid #3498db;
 	border-radius: 8px;
-	background-color: white;
+	background: linear-gradient(0deg, #cecece 2%, #7ca4be 98%);
 	margin-bottom: 15px;
-	color: #6495ED;
+	color: white;
 }
 
 #contenumenugauche a:link,
 #contenumenugauche a:visited {
     text-decoration: none;
-	color: #6495ED;
+	color: white;
 }
 
 #contenumenugauche a:hover {
-	background-color: yellow;
-}
-
-#boutons {
-	
+	background-color: rgb(211, 211, 47);
 }
 
 #bouton1 {
@@ -119,8 +116,6 @@ html {
 	cursor:pointer;
 	transform: scale(0.9);
 	}
-	
-	
 
 #menubottom {
     background-color: black;
