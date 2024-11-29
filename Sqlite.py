@@ -19,7 +19,7 @@ def unique_ID(table):
     cur.close()
     conn.close()
 
-    return liste2return[0][-1] + 1
+    return liste2return[-1][0] + 1
 
 #Renvoi les personnes qui correspondent aux infos
 
@@ -83,30 +83,54 @@ def CHANGE_num(data, column):
 
 #Ajoute une personne avec un numéro de téléphone
 
-def ADD_people(data):
+def ADD_people(data_people, data_num):
 
-    data.insert(0, unique_ID("People"))
-    data.append(unique_ID("Numbers"))
+    data_people.insert(0, unique_ID("People"))
+    data_people.append(unique_ID("Numbers"))
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
 
-    cur.execute("INSERT INTO People(ID, Nom, Prenom, Profession, Date_de_naissance, ID_link) VALUES(?, ?, ?, ?, ?, ?)", data)
+    cur.execute("INSERT INTO People(ID, Nom, Prenom, Profession, Date_de_naissance, ID_link) VALUES(?, ?, ?, ?, ?, ?)", data_people)
+    conn.commit()
+
+    data_num.insert(0, unique_ID("Numbers"))
+
+    cur.execute("INSERT INTO NUMBERS(ID, Indicatif, Mobile, Fixe, Domicile, Travail) VALUES(?, ?, ?, ?, ?, ?)", data_num)
     conn.commit()
 
     cur.close()
     conn.close()
 
-#Modifie les infos d'une personne
+#Modifie/supprimer les infos d'une personne
 
+def CHANGE_people(data, column):
 
-#Modifie les numéros de téléphone d'une personne
+    conn = sqlite3.connect('SQL/v2.db')
+    cur = conn.cursor()
 
+    request=f"UPDATE People SET {column} = ? WHERE ID = ?"
 
-#Supprime un numéro de qq
+    cur.execute(request, data)
+    conn.commit()
 
+    cur.close()
+    conn.close()
 
-#Supprime une personne et ses numéros
+#Supprime un rang de la table
+
+def delete(ID, table):
+
+    conn = sqlite3.connect('SQL/v2.db')
+    cur = conn.cursor()
+
+    request=f"DELETE FROM {table} WHERE ID = ?"
+
+    cur.execute(request, ID)
+    conn.commit()
+
+    cur.close()
+    conn.close()
 
 
 #########################################################################################################################
@@ -122,4 +146,10 @@ print('\n', "NUM_CORRESPONDANT:", num_correspondant([0]), '\n')
 """CHANGE_num([None, 0], "Fixe")"""
 
 #ADD_people
-ADD_people(["Almeras", "Ugo", "Extreme chomeur", 2007])#faire en sorte d'ajouter aussi des numéro
+ADD_people(["Almeras", "Ugo", "Extreme chomeur", 2007], [33, 755668977, None, None, None])#faire en sorte d'ajouter aussi des numéro
+
+#CHANGE_people
+"""CHANGE_people(["Vrai chomeur", 2], "Profession")"""
+
+#supprimer un rang
+delete([3], "Numbers")
