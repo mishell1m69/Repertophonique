@@ -67,28 +67,28 @@ html {
 	background-color: rgb(211, 211, 47);
 }
 
-#bouton1 {
+#btn_ajouter {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 25px;
 }
 
-#bouton2 {
+#btn_modifier {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 25px;
 }
 
-#bouton3 {
+#btn_supprimer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 25px;
 }
 
-.btn {
+.btn_primaires {
 	text-decoration: none;
 	padding: 15px;
 	font-family: arial;
@@ -106,7 +106,7 @@ html {
 	}
 	
 	
-	.btn:hover {
+	.btn_primaires:hover {
 	padding: 15px;
 	color: #FFFFFF;
 	background-color: #548dd4;
@@ -116,6 +116,15 @@ html {
 	cursor:pointer;
 	transform: scale(0.9);
 	}
+
+	.btn_secondaires {
+
+		}
+		
+		
+		.btn_secondaires:hover {
+
+		}
 
 #menubottom {
     background-color: black;
