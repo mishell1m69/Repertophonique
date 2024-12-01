@@ -118,12 +118,34 @@ html {
 	}
 
 	.btn_secondaires {
-
+		text-decoration: none;
+		padding: 10px;
+		margin: 10px;
+		margin-left: 50px;
+		font-family: arial;
+		font-size: 1em;
+		color: #ffffff;
+		background-color: #366092;
+		border-radius: 20px;
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border: 3px solid #FFFFFF;
+		/*box-shadow: 13px 10px 15px #444444;
+		-webkit-box-shadow: 13px 10px 15px #444444;
+		-moz-box-shadow: 13px 10px 15px #444444;*/
+		transition: transform 0.25s ease-in-out;
 		}
 		
 		
 		.btn_secondaires:hover {
-
+		padding: 10px;
+		color: #FFFFFF;
+		background-color: #548dd4;
+		/*box-shadow: 13px 10px 15px #777777;
+		-webkit-box-shadow: 13px 10px 15px #777777;
+		-moz-box-shadow: 13px 10px 15px #777777;*/
+		cursor:pointer;
+		transform: scale(1.1);		
 		}
 
 #menubottom {
