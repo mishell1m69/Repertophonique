@@ -1,92 +1,125 @@
 import sqlite3
 
 
-
-#Renvoi la plus grande clé primaire + 1 de la table
-
 def unique_ID(table):
+    """
+    Renvoie la plus grande clé primaire + 1 de la table spécifiée.
+    
+    Args:
+        table (str): Le nom de la table dans laquelle rechercher la clé primaire.
+    
+    Returns:
+        int: La plus grande clé primaire existante + 1, ou 1 si la table est vide.
+    """
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
 
-    request=f"SELECT ID FROM {table}"
-
+    request = f"SELECT ID FROM {table}"
     cur.execute(request)
     conn.commit()
 
-    liste2return=cur.fetchall()
+    liste2return = cur.fetchall()
 
     cur.close()
     conn.close()
 
     return liste2return[-1][0] + 1 if len(liste2return) > 0 else 1
 
-#Renvoi les personnes qui correspondent aux infos
 
 def people_correspondant(data):
+    """
+    Renvoie les personnes correspondant aux critères donnés.
+    
+    Args:
+        data (list): Liste de valeurs (nom, prénom, profession, date de naissance) avec None pour les champs non spécifiés.
+    
+    Returns:
+        list: Une liste de tuples contenant les informations des personnes correspondant aux critères.
+    """
 
-    corep={0:"nom = ?", 1:"prenom = ?",2:"profession = ?" , 3:"date_de_naissance = ?"}
+    corep = {0: "nom = ?", 1: "prenom = ?", 2: "profession = ?", 3: "date_de_naissance = ?"}
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
-    
-    conditions=[]
-    settings=[]
+
+    conditions = []
+    settings = []
 
     for i in data:
         if i:
             conditions.append(corep[data.index(i)])
             settings.append(i)
 
-    request=f"SELECT * FROM People WHERE {' AND '.join(conditions)}"
-
+    request = f"SELECT * FROM People WHERE {' AND '.join(conditions)}"
     cur.execute(request, settings)
     conn.commit()
 
-    liste2return=cur.fetchall()
+    liste2return = cur.fetchall()
 
     cur.close()
     conn.close()
 
     return liste2return
-#Renvoi les numéros de téléphones correspondant à une personne
+
 
 def num_correspondant(ID_num):
+    """
+    Renvoie les numéros de téléphone correspondant à une personne donnée.
+    
+    Args:
+        ID_num (list): ID des numéros de la personne dont on souhaite récupérer les numéros.
+    
+    Returns:
+        list: Une liste de tuples contenant les numéros de téléphone.
+    """
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
 
     cur.execute("SELECT * FROM Numbers WHERE ID = ?", ID_num)
     conn.commit()
-    
-    liste2return=cur.fetchall()
+
+    liste2return = cur.fetchall()
 
     cur.close()
     conn.close()
 
     return liste2return
 
-#Modifie/ajoute/supprime un numéro à une personne existante
 
 def CHANGE_num(data, column):
+    """
+    Modifie, ajoute ou supprime un numéro pour une personne existante.
+    
+    Args:
+        data (list): Liste contenant la nouvelle valeur et l'ID de la personne.
+        column (str): Le nom de la colonne à modifier.
+    """
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
 
-    request=f"UPDATE Numbers SET {column} = ? WHERE ID = ?"
-
+    request = f"UPDATE Numbers SET {column} = ? WHERE ID = ?"
     cur.execute(request, data)
     conn.commit()
 
     cur.close()
     conn.close()
 
-#Ajoute une personne avec un numéro de téléphone
 
 def ADD_people(data_people, data_num):
+    """
+    Ajoute une nouvelle personne avec un numéro de téléphone.
+    
+    Args:
+        data_people (list): Informations personnelles (nom, prénom, profession, date de naissance).
+        data_num (list): Numéros de téléphone (indicatif, mobile, fixe, domicile, travail).
+    """
 
     data_people.insert(0, unique_ID("People"))
     data_people.append(unique_ID("Numbers"))
+    data_num.insert(0, unique_ID("Numbers"))
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
@@ -94,32 +127,40 @@ def ADD_people(data_people, data_num):
     cur.execute("INSERT INTO People(ID, Nom, Prenom, Profession, Date_de_naissance, ID_link) VALUES(?, ?, ?, ?, ?, ?)", data_people)
     conn.commit()
 
-    data_num.insert(0, unique_ID("Numbers"))
-
     cur.execute("INSERT INTO NUMBERS(ID, Indicatif, Mobile, Fixe, Domicile, Travail) VALUES(?, ?, ?, ?, ?, ?)", data_num)
     conn.commit()
 
     cur.close()
     conn.close()
 
-#Modifie/ajoute/supprime les infos d'une personne
 
 def CHANGE_people(data, column):
+    """
+    Modifie, ajoute ou supprime les informations d'une personne.
+    
+    Args:
+        data (list): Liste contenant la nouvelle valeur et l'ID de la personne.
+        column (str): Le nom de la colonne à modifier.
+    """
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
 
-    request=f"UPDATE People SET {column} = ? WHERE ID = ?"
-
+    request = f"UPDATE People SET {column} = ? WHERE ID = ?"
     cur.execute(request, data)
     conn.commit()
 
     cur.close()
     conn.close()
 
-#Supprime un rang de la table
 
 def delete(ID):
+    """
+    Supprime une personne et ses numéros associés.
+    
+    Args:
+        ID (list): L'ID de la personne à supprimer.
+    """
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
@@ -127,8 +168,7 @@ def delete(ID):
     cur.execute("SELECT ID_link FROM People WHERE ID = ?", ID)
     conn.commit()
 
-    IDlink=cur.fetchall()
-    print(IDlink)
+    IDlink = cur.fetchall()
 
     cur.execute("DELETE FROM Numbers WHERE ID = ?", IDlink[0])
     conn.commit()
@@ -138,25 +178,3 @@ def delete(ID):
 
     cur.close()
     conn.close()
-
-
-#########################################################################################################################
-
-print('\n', "PEOPLE_CORRESPONDANT:", people_correspondant([None, None, None, 2007]), '\n')
-
-print('\n')
-
-print('\n', "NUM_CORRESPONDANT:", num_correspondant([1]), '\n')
-
-
-#CHANGE_num
-"""CHANGE_num([None, 0], "Fixe")"""
-
-#ADD_people
-#ADD_people(["Almeras", "Ugo", "Unique chomeur", 2007], [33, 755668977, None, None, None])#faire en sorte d'ajouter aussi des numéro
-
-#CHANGE_people
-"""CHANGE_people(["Vrai chomeur", 2], "Profession")"""
-
-#supprimer un rang
-#delete([2])
