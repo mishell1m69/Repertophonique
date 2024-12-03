@@ -1,7 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
-
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -26,24 +25,29 @@ def supprimer():
 def howto():
     return render_template("howto.html")
 
-@app.route('/rechercher')
-def rechercher():
-    return render_template("rechercher.html")
+@app.route('/leprojet')
+def leprojet():
+    return render_template("leprojet.html")
 
-@app.route('/add_ppl')
+@app.route('/addPpl')
 def add_ppl():
-    return render_template("add_ppl.html")
+    return render_template("addPpl.html")
 
-@app.route('/add_num')
+@app.route('/addNum', methods=['GET', 'POST'])
 def add_num():
-    return render_template("add_num.html")
+    return render_template("addNum.html")
 
-@app.route('/add_both')
+@app.route('/addBoth')
 def add_both():
-    return render_template("add_both.html")
+    return render_template("addBoth.html")
 
-@app.route('/added_num')
+@app.route('/addedNum', methods=['GET', 'POST'])
 def added_num():
-    return render_template("added_num.html")
+    if request.method == "POST":
+        global first_name,last_name
+        first_name = request.form.get("fname")
+        last_name = request.form.get("lname") 
+        print("Your name is", first_name, last_name)
+    return render_template("addedNum.html")
 
 app.run(debug=True)

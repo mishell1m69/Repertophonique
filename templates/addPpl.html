@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="{{ url_for('static',filename='images/logo_repertophonique.png') }}" />
+        <title>Ajouter</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+        <script src="scripts.js"></script>
+    </head>
+	
+    <body>
+	
+		<div id="logo">
+			<p style="float:left"><img src="{{ url_for('static',filename='images/logo_repertophonique.png') }}">
+			</p>
+		</div>
+		
+		<div id="titre">
+			<br/>
+			<p align="center">
+			Ajouter...
+			<br/>
+			<span id="libelle"><i>Créez de nouveaux contacts</i></span>
+			</p>
+		</div>
+		
+		<br/>
+		
+	    <div id="menugauche">
+			<div id="contenumenugauche">
+				<ul>
+					<li><a href="/">Retour</a></li>
+				</ul>
+	    	</div>
+		</div>
+
+		<div id="boutons">
+			<div id="btn_ajouter_numero">
+				<a href="add_num"><button class="btn_secondaires">... Un numéro</button></a>
+			</div>
+			<div id="btn_ajouter_personne">
+				<a href="add_ppl"><button class="btn_secondaires">... Une personne</button></a>
+			</div>
+			<div id="btn_ajouter_personne+numero">
+				<a href="add_both"><button class="btn_secondaires">... Une personne + Un numéro</button></a>
+			</div>
+		</div>
+
+	</body>
+	
+</html>
