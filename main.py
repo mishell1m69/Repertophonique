@@ -25,9 +25,9 @@ def supprimer():
 def howto():
     return render_template("howto.html")
 
-@app.route('/leprojet')
-def leprojet():
-    return render_template("leprojet.html")
+@app.route('/rechercher')
+def rechercher():
+    return render_template("rechercher.html")
 
 @app.route('/addPpl')
 def add_ppl():
