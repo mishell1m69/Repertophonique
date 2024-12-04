@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from Sqlite import *
 
 app = Flask(__name__)
 @app.route('/')
@@ -25,9 +26,9 @@ def supprimer():
 def howto():
     return render_template("howto.html")
 
-@app.route('/rechercher')
-def rechercher():
-    return render_template("rechercher.html")
+@app.route('/leprojet')
+def leprojet():
+    return render_template("leprojet.html")
 
 @app.route('/addPpl')
 def add_ppl():
@@ -41,13 +42,19 @@ def add_num():
 def add_both():
     return render_template("addBoth.html")
 
-@app.route('/addedNum', methods=['GET', 'POST'])
-def added_num():
+@app.route('/addNum2', methods=['GET', 'POST'])
+def add_num_2():
     if request.method == "POST":
         global first_name,last_name
         first_name = request.form.get("fname")
-        last_name = request.form.get("lname") 
-        print("Your name is", first_name, last_name)
+        last_name = request.form.get("lname")
+        people = people_correspondant([first_name,last_name,None,None])
+        
+    return render_template("addNum2.html")
+
+@app.route('/addedNum', methods=['GET', 'POST'])
+def added_num():
+
     return render_template("addedNum.html")
 
 app.run(debug=True)
