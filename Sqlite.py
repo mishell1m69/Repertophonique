@@ -32,13 +32,13 @@ def people_correspondant(data):
     Renvoie les personnes correspondant aux critères donnés.
     
     Args:
-        data (list): Liste de valeurs (nom, prénom, profession, date de naissance) avec None pour les champs non spécifiés.
+        data (list): Liste de valeurs (nom, prénom, profession, age) avec None pour les champs non spécifiés.
     
     Returns:
         list: Une liste de tuples contenant les informations des personnes correspondant aux critères.
     """
 
-    corep = {0: "nom = ?", 1: "prenom = ?", 2: "profession = ?", 3: "date_de_naissance = ?"}
+    corep = {0: "nom = ?", 1: "prenom = ?", 2: "profession = ?", 3: "Age = ?"}
 
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
@@ -113,7 +113,7 @@ def ADD_people(data_people, data_num):
     Ajoute une nouvelle personne avec un numéro de téléphone.
     
     Args:
-        data_people (list): Informations personnelles (nom, prénom, profession, date de naissance).
+        data_people (list): Informations personnelles (nom, prénom, profession, age).
         data_num (list): Numéros de téléphone (indicatif, mobile, fixe, domicile, travail).
     """
 
@@ -124,7 +124,7 @@ def ADD_people(data_people, data_num):
     conn = sqlite3.connect('SQL/v2.db')
     cur = conn.cursor()
 
-    cur.execute("INSERT INTO People(ID, Nom, Prenom, Profession, Date_de_naissance, ID_link) VALUES(?, ?, ?, ?, ?, ?)", data_people)
+    cur.execute("INSERT INTO People(ID, Nom, Prenom, Profession, Age, ID_link) VALUES(?, ?, ?, ?, ?, ?)", data_people)
     conn.commit()
 
     cur.execute("INSERT INTO NUMBERS(ID, Indicatif, Mobile, Fixe, Domicile, Travail) VALUES(?, ?, ?, ?, ?, ?)", data_num)
