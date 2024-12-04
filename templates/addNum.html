@@ -36,13 +36,20 @@
 	    	</div>
 		</div>
 
-		<form action="/addedNum" method="post">
-            <label for="fname">Nom:</label><br>
-            <input type="text" id="fname" name="fname" value="Alain"><br>
-            <label for="lname">Prenom:</label><br>
-            <input type="text" id="lname" name="lname" value="Grava"><br><br>
-            <input type="submit" value="Submit">
-          </form>
+		<div class="blocqueries">
+			<form action="/addedNum" method="post">
+        	    <label for="fname">Nom:</label><br>
+        	    <input type="text" id="fname" name="fname" value="John" class="queries"><br>
+        	    <label for="lname">Prenom:</label><br>
+        	    <input type="text" id="lname" name="lname" value="Doe" class="queries"><br><br>
+				<label for="lname">Profession:</label><br>
+				<input type="text" id="job" name="job" value="Informaticien" class="queries"><br><br>
+				<label for="">Age:</label><br>
+				<input type="text" id="age" name="age" value="40" class="queries"><br><br>
+        	    <input type="submit" id="submit" value="Submit">
+				
+        	</form>
+		</div>
 
 	</body>
 	
