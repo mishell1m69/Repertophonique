@@ -37,7 +37,7 @@ html {
 }
 
 #menugauche {
-    background-color: #6495ED;
+    background-color: #366092;
 	border-radius: 0px 30px 30px 0px;
     width: 220px;
 	height: 100%;
@@ -46,14 +46,16 @@ html {
 	font-weight: bold;
 	color: white;
 	line-height: 60px;
-	float: left;	
- }
+	float: left;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+	transition: background-color 0.3s;	
+}
 
  #contenumenugauche {
 	cursor: pointer;
-	border: 2px solid #3498db;
+	border: 2px solid #366092;
 	border-radius: 0px 30px 30px 0px;
-	background: linear-gradient(0deg, #cecece 2%, #7ca4be 98%);
+	background-color: #366092;
 	margin-bottom: 15px;
 	color: white;
 }
@@ -64,8 +66,11 @@ html {
 	color: white;
 }
 
-#contenumenugauche a:hover {
-	background-color: rgb(211, 211, 47);
+#contenumenugauche ul:hover {
+	background: linear-gradient(0deg, #cecece 2%, #7ca4be 98%);
+	border-radius: 0px 30px 30px 0px;
+	transition: background 0.2s, border-radius 0.2s;
+	animation: glow 0.2s ease-in-out;
 }
 
 #btn_ajouter {
