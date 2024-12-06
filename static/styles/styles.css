@@ -247,8 +247,13 @@ html {
 
 #menubottom:hover {
   background-color: #131313; /* couleur de fond lorsque l'on survole */
-  color: grey;
+  color: #131313;
 }
+
+#menubottom:hover .texte_invisible{
+	color: #ffffff;
+	transition: opacity 0.5s ease;
+  }
 
 #menubottom:active {
   background-color: #474747; /* couleur de fond lorsque l'on clique */
@@ -263,4 +268,9 @@ html {
 	color: rgb(0, 0, 0);
 	line-height: 40px;
 	float: left;
+}
+
+.texte_invisible {
+	color: #000000;	
+	transition: opacity 0.5s ease;
 }
