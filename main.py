@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 from Sqlite import *
 
+selected = None
+
 app = Flask(__name__)
 @app.route('/')
 def index():
@@ -45,16 +47,37 @@ def add_both():
 @app.route('/addNum2', methods=['GET', 'POST'])
 def add_num_2():
     if request.method == "POST":
-        global first_name,last_name
-        first_name = request.form.get("fname")
-        last_name = request.form.get("lname")
-        people = people_correspondant([first_name,last_name,None,None])
+        global selected
+        first_name = request.form.get("fname") if not request.form.get("fname")=="" else None
+        last_name = request.form.get("lname") if not request.form.get("lname")=="" else None
+        job = request.form.get("job") if not request.form.get("job")=="" else None
+        birth = 2024 - int(request.form.get("age")) if not request.form.get("age")=="" else None
+        selected = people_correspondant([first_name,last_name,job,birth])
+        if len(selected)>0:
+            return render_template("addNum2.html")
+        else:
+            return render_template("lbozo.html")
+    else:
+        return render_template("index.html")
         
-    return render_template("addNum2.html")
 
 @app.route('/addedNum', methods=['GET', 'POST'])
 def added_num():
 
     return render_template("addedNum.html")
+
+@app.route('/addedPpl', methods=['GET', 'POST'])
+def added_ppl():
+    if request.method == "POST":
+        global selected
+        first_name = request.form.get("fname") if not request.form.get("fname")=="" else None
+        last_name = request.form.get("lname") if not request.form.get("lname")=="" else None
+        job = request.form.get("job") if not request.form.get("job")=="" else None
+        birth = 2024 - int(request.form.get("age")) if not request.form.get("age")=="" else None
+        ADD_people([first_name,last_name,job,birth],[None,None,None,None,None])
+        
+        return render_template("addedPpl.html")
+    else:
+        return render_template("index.html")
 
 app.run(debug=True)

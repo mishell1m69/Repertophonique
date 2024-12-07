@@ -22,12 +22,16 @@
 			<p align="center">
 			UwU
 			<br/>
-			<span id="libelle"><i>Choisissez</i></span>
+			<span id="libelle"><i>Choisissez votre numero et votre personne</i></span>
 			</p>
 			<form action="/addedNum">
-				<label for="ppl">Choose a car:</label>
+				<label for="ppl">Choisissez une personne:</label>
 				<select name="ppl" id="ppl">
-					<option value="volvo">Volvo</option>
+					{%for i in range(0, len(selected))%} 
+  
+ 
+					<option value="selected[i]">{{selected[i]}}</option>
+					{%endfor%}
 				</select>
 				<br><br>
 				<input type="submit" value="Submit">
