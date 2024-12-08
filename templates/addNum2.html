@@ -24,9 +24,22 @@
 			<br/>
 			<span id="libelle"><i>Choisissez votre numéro et votre personne</i></span>
 			</p>
+		</div>
+		
+		<br/>
+		
+	    <div id="menugauche">
+			<div id="contenumenugauche">
+				<ul>
+					<li><a href="/">Retour</a></li>
+				</ul>
+	    	</div>
+		</div>
+
+		<div class="blocqueries">
 			<form action="/addedNum" method="post">
 				<label for="ppl">Choisissez une personne:</label>
-				<select name="ppl" id="ppl">
+				<select class="queries" name="ppl" id="ppl">
 					{%for i in range(0, len)%} 
   
  
@@ -53,16 +66,6 @@
 				<input type="submit" id="submit" value="Submit">
 					
 				</form>
-		</div>
-		
-		<br/>
-		
-	    <div id="menugauche">
-			<div id="contenumenugauche">
-				<ul>
-					<li><a href="/">Retour</a></li>
-				</ul>
-	    	</div>
 		</div>
 
 	</body>

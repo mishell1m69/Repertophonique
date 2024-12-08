@@ -18,7 +18,7 @@ def ajouter():
 
 @app.route('/modifier')
 def edit_info():
-    return render_template("editInfo.html")
+    return render_template("modifier.html")
 
 @app.route('/editInfo2', methods=['GET', 'POST'])
 def edit_info_2():

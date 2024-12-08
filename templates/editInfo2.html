@@ -24,9 +24,22 @@
 			<br/>
 			<span id="libelle"><i>Choisissez votre numero et votre personne:</i></span>
 			</p>
+		</div>
+		
+		<br/>
+		
+	    <div id="menugauche">
+			<div id="contenumenugauche">
+				<ul>
+					<li><a href="/">Retour</a></li>
+				</ul>
+	    	</div>
+		</div>
+
+		<div id="blocqueries">
 			<form action="/editedInfo" method="post">
 				<label for="ppl">Choisissez une personne:</label>
-				<select name="ppl" id="ppl">
+				<select class="queries" name="ppl" id="ppl">
 					{%for i in range(0, len)%} 
   
  
@@ -35,7 +48,7 @@
 				</select>
 				<br><br>
                 <label for="dinfo">Quelles informations modifier?</label>
-				<select name="dinfo" id="dinfo">
+				<select class="queries" name="dinfo" id="dinfo">
                     <option value=Nom>Nom</option>
 					<option value=Prenom>Prenom</option>
 					<option value=Profession>Profession</option>
@@ -53,16 +66,6 @@
 				<input type="submit" id="submit" value="Submit">
 					
 				</form>
-		</div>
-		
-		<br/>
-		
-	    <div id="menugauche">
-			<div id="contenumenugauche">
-				<ul>
-					<li><a href="/">Retour</a></li>
-				</ul>
-	    	</div>
 		</div>
 
 	</body>
