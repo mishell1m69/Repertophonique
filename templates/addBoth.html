@@ -22,7 +22,7 @@
 			<p align="center">
 			Ajouter...
 			<br/>
-			<span id="libelle"><i>Créez de nouveaux contacts</i></span>
+			<span id="libelle"><i>Ajoutez une personne : donnez nous des informations</i></span>
 			</p>
 		</div>
 		
@@ -36,16 +36,35 @@
 	    	</div>
 		</div>
 
-		<div id="boutons">
-			<div id="btn_ajouter_numero">
-				<a href="add_num"><button class="btn_secondaires">... Un numéro</button></a>
-			</div>
-			<div id="btn_ajouter_personne">
-				<a href="add_ppl"><button class="btn_secondaires">... Une personne</button></a>
-			</div>
-			<div id="btn_ajouter_personne+numero">
-				<a href="add_both"><button class="btn_secondaires">... Une personne + Un numéro</button></a>
-			</div>
+		<div class="blocqueries">
+			<form action="/addedBoth" method="post">
+        	    <label for="fname">Nom:</label><br>
+        	    <input type="text" id="fname" name="fname" value="John" class="queries"><br>
+        	    <label for="lname">Prenom:</label><br>
+        	    <input type="text" id="lname" name="lname" value="Doe" class="queries"><br><br>
+				<label for="lname">Profession:</label><br>
+				<input type="text" id="job" name="job" value="Informaticien" class="queries"><br><br>
+				<label for="">Age:</label><br>
+				<input type="text" id="age" name="age" value="40" class="queries"><br><br>
+
+				<label for="ind">Indicatif:</label><br>
+				<input type="text" id="ind" name="ind" value="+33" class="queries"><br>
+
+				<label for="mobile">Mobile:</label><br>
+				<input type="fixe" id="mobile" name="mobile" value="0612345678" class="queries"><br><br>
+
+				<label for="mobile">Fixe:</label><br>
+				<input type="text" id="fixe" name="fixe" value="0412345678" class="queries"><br><br>
+
+				<label for="domicile">Domicile:</label><br>
+				<input type="text" id="domicile" name="domicile" value="0456789101" class="queries"><br><br>
+
+				<label for="travail">Travail:</label><br>
+				<input type="text" id="travail" name="travail" value="0405060708" class="queries"><br><br>
+
+        	    <input type="submit" id="submit" value="Submit">
+				
+        	</form>
 		</div>
 
 	</body>

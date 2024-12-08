@@ -5,7 +5,7 @@
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="{{ url_for('static',filename='images/logo_repertophonique.png') }}" />
-        <title>Rechercher</title>
+        <title>Ajouter</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
         <script src="scripts.js"></script>
     </head>
@@ -20,10 +20,24 @@
 		<div id="titre">
 			<br/>
 			<p align="center">
-			Rechercher...
+			UwU
 			<br/>
-			<span id="libelle"><i>Trouvez les infos qui vous sont utiles.</i></span>
+			<span id="libelle"><i>Choisissez votre numero et votre personne</i></span>
 			</p>
+			<form action="/delettedSave" method="post">
+				<label for="ppl">Choisissez une personne:</label>
+				<select name="ppl" id="ppl">
+					{%for i in range(0, len)%} 
+  
+ 
+					<option value=selected[i][0]>{{selected[i]}}</option>
+					{%endfor%}
+				</select>
+				<br><br>
+
+				<input type="submit" id="submit" value="Submit">
+					
+				</form>
 		</div>
 		
 		<br/>
@@ -36,15 +50,6 @@
 	    	</div>
 		</div>
 
-		<div id="boutons">
-			<div id="btn_rechercher_numpersonne">
-				<a href="findNumFromPpl"><button class="btn_secondaires">... Un numéro selon une personne</button></a>
-			</div>
-			<div id="btn_rechercher_personnenum">
-				<a href="findPplFromNum"><button class="btn_secondaires">... Une personne selon un numéro</button></a>
-			</div>
-		</div>
-	
 	</body>
 	
 </html>

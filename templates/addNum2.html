@@ -24,18 +24,35 @@
 			<br/>
 			<span id="libelle"><i>Choisissez votre numero et votre personne</i></span>
 			</p>
-			<form action="/addedNum">
+			<form action="/addedNum" method="post">
 				<label for="ppl">Choisissez une personne:</label>
 				<select name="ppl" id="ppl">
-					{%for i in range(0, len(selected))%} 
+					{%for i in range(0, len)%} 
   
  
-					<option value="selected[i]">{{selected[i]}}</option>
+					<option value=selected[i][0]>{{selected[i]}}</option>
 					{%endfor%}
 				</select>
 				<br><br>
-				<input type="submit" value="Submit">
-			  </form>
+				
+				<label for="ind">:</label><br>
+				<input type="text" id="ind" name="ind" value="+33" class="queries"><br>
+
+				<label for="mobile">Mobile:</label><br>
+				<input type="fixe" id="mobile" name="mobile" value="0612345678" class="queries"><br><br>
+
+				<label for="mobile">Fixe:</label><br>
+				<input type="text" id="fixe" name="fixe" value="0412345678" class="queries"><br><br>
+
+				<label for="domicile">Domicile:</label><br>
+				<input type="text" id="domicile" name="domicile" value="0456789101" class="queries"><br><br>
+
+				<label for="travail">Travail:</label><br>
+				<input type="text" id="travail" name="travail" value="0405060708" class="queries"><br><br>
+
+				<input type="submit" id="submit" value="Submit">
+					
+				</form>
 		</div>
 		
 		<br/>
