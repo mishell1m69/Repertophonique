@@ -20,7 +20,7 @@
 		<div id="titre">
 			<br/>
 			<p align="center">
-			UwU
+			Ajouter
 			<br/>
 			<span id="libelle"><i>Choisissez votre numero et votre personne</i></span>
 			</p>
@@ -30,12 +30,12 @@
 					{%for i in range(0, len)%} 
   
  
-					<option value=selected[i][0]>{{selected[i]}}</option>
+					<option value={{selected[i][0]}}>{{selected[i]}}</option>
 					{%endfor%}
 				</select>
 				<br><br>
 				
-				<label for="ind">:</label><br>
+				<label for="ind">Indicatif:</label><br>
 				<input type="text" id="ind" name="ind" value="+33" class="queries"><br>
 
 				<label for="mobile">Mobile:</label><br>

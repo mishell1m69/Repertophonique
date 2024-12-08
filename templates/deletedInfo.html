@@ -20,24 +20,10 @@
 		<div id="titre">
 			<br/>
 			<p align="center">
-			Supprimer
+			Succes
 			<br/>
-			<span id="libelle"><i>Choisissez votre numero et votre personne</i></span>
+			<span id="libelle"><i>Information(s) supprimée(s) avec succès</i></span>
 			</p>
-			<form action="/delettedSave" method="post">
-				<label for="ppl">Choisissez une personne:</label>
-				<select name="ppl" id="ppl">
-					{%for i in range(0, len)%} 
-  
- 
-					<option value={{selected[i][0]}}>{{selected[i]}}</option>
-					{%endfor%}
-				</select>
-				<br><br>
-
-				<input type="submit" id="submit" value="Submit">
-					
-				</form>
 		</div>
 		
 		<br/>

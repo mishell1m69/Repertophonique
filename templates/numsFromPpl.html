@@ -20,24 +20,10 @@
 		<div id="titre">
 			<br/>
 			<p align="center">
-			Supprimer
+			Rechercher
 			<br/>
-			<span id="libelle"><i>Choisissez votre numero et votre personne</i></span>
+			<span id="libelle"><i>Voici les résultats</i></span>
 			</p>
-			<form action="/delettedSave" method="post">
-				<label for="ppl">Choisissez une personne:</label>
-				<select name="ppl" id="ppl">
-					{%for i in range(0, len)%} 
-  
- 
-					<option value={{selected[i][0]}}>{{selected[i]}}</option>
-					{%endfor%}
-				</select>
-				<br><br>
-
-				<input type="submit" id="submit" value="Submit">
-					
-				</form>
 		</div>
 		
 		<br/>
@@ -48,6 +34,14 @@
 					<li><a href="/">Retour</a></li>
 				</ul>
 	    	</div>
+		</div>
+
+		<div class="blocqueries">
+            <ul>
+                {%for i in range(0, len)%} 
+				<li>{{selected[i]}}</li>
+				{%endfor%}
+            </ul>
 		</div>
 
 	</body>

@@ -22,9 +22,10 @@
 			<p align="center">
 			Supprimer
 			<br/>
-			<span id="libelle"><i>Choisissez votre numero et votre personne</i></span>
+			<span id="libelle"><i>Choisissez les informations a supprimer</i></span>
 			</p>
-			<form action="/delettedSave" method="post">
+			<form action="/deletedInfo" method="post">
+
 				<label for="ppl">Choisissez une personne:</label>
 				<select name="ppl" id="ppl">
 					{%for i in range(0, len)%} 
@@ -33,10 +34,23 @@
 					<option value={{selected[i][0]}}>{{selected[i]}}</option>
 					{%endfor%}
 				</select>
-				<br><br>
+				<br>
+
+				<label for="dinfo">Quelle information supprimer</label>
+				<select name="dinfo" id="dinfo">
+                    <option value=Nom>Nom</option>
+					<option value=Prenom>Prenom</option>
+					<option value=Profession>Profession</option>
+					<option value=Age>Age</option>
+					<option value=Indicatif>Indicatif</option>
+					<option value=Mobile>Mobile</option>
+					<option value=Fixe>Fixe</option>
+					<option value=Domicile>Domicile</option>
+					<option value=Travail>Travail</option>
+				</select>
+				<br>
 
 				<input type="submit" id="submit" value="Submit">
-					
 				</form>
 		</div>
 		

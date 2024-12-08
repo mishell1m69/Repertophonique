@@ -20,11 +20,11 @@
 		<div id="titre">
 			<br/>
 			<p align="center">
-			Supprimer
+			Modifier
 			<br/>
 			<span id="libelle"><i>Choisissez votre numero et votre personne</i></span>
 			</p>
-			<form action="/delettedSave" method="post">
+			<form action="/editedInfo" method="post">
 				<label for="ppl">Choisissez une personne:</label>
 				<select name="ppl" id="ppl">
 					{%for i in range(0, len)%} 
@@ -34,6 +34,21 @@
 					{%endfor%}
 				</select>
 				<br><br>
+                <label for="dinfo">Quelle information modifier?</label>
+				<select name="dinfo" id="dinfo">
+                    <option value=Nom>Nom</option>
+					<option value=Prenom>Prenom</option>
+					<option value=Profession>Profession</option>
+					<option value=Age>Age</option>
+					<option value=Indicatif>Indicatif</option>
+					<option value=Mobile>Mobile</option>
+					<option value=Fixe>Fixe</option>
+					<option value=Domicile>Domicile</option>
+					<option value=Travail>Travail</option>
+				</select>
+				<br>
+                <label for="info">Modification:</label><br>
+        	    <input type="text" id="info" name="info" value="" class="queries"><br>
 
 				<input type="submit" id="submit" value="Submit">
 					
