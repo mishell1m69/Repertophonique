@@ -83,7 +83,7 @@ def deletted_save():
         global selected
         sel = request.form.get("ppl")
         delete([sel])
-        return render_template("addedNum.html")
+        return render_template("delettedSave.html")
     else:
         return render_template("index.html")
     
