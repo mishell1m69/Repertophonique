@@ -18,7 +18,7 @@ def ajouter():
 
 @app.route('/modifier')
 def edit_info():
-    return render_template("modifier.html")
+    return render_template("editInfo.html")
 
 @app.route('/editInfo2', methods=['GET', 'POST'])
 def edit_info_2():
@@ -49,7 +49,7 @@ def edited_info():
             if dinfo == "age":
                 info = str(info)
             CHANGE_people([info,sel],dinfo)
-        return render_template("deletedInfo.html")
+        return render_template("editedInfo.html")
     else:
         return render_template("index.html")
 
@@ -147,7 +147,10 @@ def nums_found():
         birth = 2024 - int(request.form.get("age")) if not request.form.get("age")=="" else None
         selected = people_correspondant([first_name,last_name,job,birth])
         if len(selected)>0:
-            return render_template("numsFromPpl.html", selected = selected, len = len(selected))
+            nb=[]
+            for x in selected:
+                nb.append(num_correspondant([x[5]]))
+            return render_template("numsFromPpl.html", selected = selected, len = len(selected), nb = nb)
         else:
             return render_template("lbozo.html")
     else:
@@ -229,7 +232,7 @@ def added_both():
         travail = request.form.get("travail") if not request.form.get("travail")=="" else None
         ADD_people([first_name,last_name,job,birth],[ind,mobile,fixe,domicile,travail])
         
-        return render_template("addedPpl.html")
+        return render_template("addedBoth.html")
     else:
         return render_template("index.html")
 

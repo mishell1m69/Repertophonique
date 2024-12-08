@@ -39,7 +39,7 @@
 		<div class="blocqueries">
             <ul>
                 {%for i in range(0, len)%} 
-				<li>{{selected[i]}}</li>
+				<li>Nom:{{selected[i][1]}} Prenom:{{selected[i][2]}} Métier:{{selected[i][3]}} Date de naissance:{{selected[i][4]}} Indicatif:{{nb[i][0][1]}} Mobile:{{nb[i][0][2]}} Fixe:{{nb[i][0][3]}} Domicile:{{nb[i][0][4]}} Travail:{{nb[i][0][5]}}</li>
 				{%endfor%}
             </ul>
 		</div>

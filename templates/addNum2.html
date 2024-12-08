@@ -43,7 +43,7 @@
 					{%for i in range(0, len)%} 
   
  
-					<option value={{selected[i][0]}}>{{selected[i]}}</option>
+					<option value={{selected[i][0]}}>Nom:{{selected[i][1]}} Prenom:{{selected[i][2]}} Métier:{{selected[i][3]}} Date de naissance:{{selected[i][4]}}</option>
 					{%endfor%}
 				</select>
 				<br><br>
@@ -52,16 +52,16 @@
 				<input type="text" id="ind" name="ind" value="+33" class="queries"><br>
 
 				<label for="mobile">Mobile:</label><br>
-				<input type="fixe" id="mobile" name="mobile" value="0102030405" class="queries"><br><br>
+				<input type="fixe" id="mobile" name="mobile" value="" class="queries"><br><br>
 
 				<label for="mobile">Fixe:</label><br>
-				<input type="text" id="fixe" name="fixe" value="0102030405" class="queries"><br><br>
+				<input type="text" id="fixe" name="fixe" value="" class="queries"><br><br>
 
 				<label for="domicile">Domicile:</label><br>
-				<input type="text" id="domicile" name="domicile" value="0102030405" class="queries"><br><br>
+				<input type="text" id="domicile" name="domicile" value="" class="queries"><br><br>
 
 				<label for="travail">Travail:</label><br>
-				<input type="text" id="travail" name="travail" value="0102030405" class="queries"><br><br>
+				<input type="text" id="travail" name="travail" value="" class="queries"><br><br>
 
 				<input type="submit" id="submit" value="Submit">
 					
